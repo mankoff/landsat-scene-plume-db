@@ -1,0 +1,39 @@
+* Table of contents                               :toc_2:noexport:
+- [[#introduction][Introduction]]
+  - [[#code][Code]]
+- [[#reference][Reference]]
+- [[#database-format][Database format]]
+
+* Introduction
+
+We have examined 3335 Landsat 8 scenes from 2013 through 2016 (work initially done in 2017) at Greenlandic glacier termini for the surface signature of subglacial discharge plumes - small muddy brown pools indicating where submarine subglacial discharge rises buoyantly to the surface. Where plume surface pools are sometimes present, we have classified that location (lon,lat, scene ID) as “plume”, and that approximate location in all other scenes in the database as one of "plume" (may be surrounded by ice or water), "water" (no plume) "ice" (no plume), or "cloud" (unknown).
+
+From the 3335 scenes, there are 10878 classifications because most scenes cover several fjords, and glacier termini may have more than one plume. Of the 10878 classification, they are 2985 cloud, 4281 ice, 1835
+plume, and 1777 water.
+
+** Code
+
++ [[./GEE_browse_DB.js]] is a Google Earth Engine snippet that, when manually fed one line from the DB, will display that scene at that location.
++ [[./GEE_browse_scenes.js]] is the Google Earth Engine snippet used to browse all scenes and click to classify the point of interest.
+
+* Reference
+
+#+BEGIN_EXAMPLE
+In preparation to the GEUS bulletin
+#+END_EXAMPLE
+
+* Database format
+
+#+BEGIN_SRC bash :exports results
+head -n8 scenes.csv
+#+END_SRC
+
+#+RESULTS:
+| row | Scene                 |              Lat |               Lon | Comment |
+|   0 | LC80020172013148LGN00 |  61.199488225361 |  -45.204963684082 | cloud   |
+|   1 | LC82330172013230LGN00 | 61.1953529618127 | -45.1980972290039 | plume   |
+|   2 | LC80010172013237LGN00 | 61.1940295628274 | -45.2324295043945 | cloud   |
+|   3 | LC80020172013244LGN00 | 61.1943604177853 | -45.2015304565429 | ice     |
+|   4 | LC82330172013246LGN00 | 61.1942115332318 | -45.1955223083496 | ice     |
+|   5 | LC80010172013269LGN00 | 61.1953033348491 | -45.2006721496582 | ice     |
+|   6 | LC80020172013276LGN00 | 61.1942280757142 | -45.1972389221191 | plume   |
